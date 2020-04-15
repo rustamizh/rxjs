@@ -183,3 +183,21 @@ interval(1000)
   .subscribe(data => console.log(data));
 output: [0, 1] ... [2, 3, 4] ...
 ```
+
+### bufferTime(time)
+buffers the source Observable values for a specific time period
+```javascript
+interval(1000)
+  .pipe(bufferTime(2000)
+  .subscribe(data => console.log(data));
+output: [0] ... [1, 2] ... [3, 4]
+```
+
+### bufferCount(bufferSize, startBufferEvery)
+buffers the source Observable values until the size hits the maximum bufferSize
+```javascript
+interval(1000)
+  .pipe(bufferCount(3, 2)
+  .subscribe(data => console.log(data));
+output: [0, 1, 2] ... [3, 4, 5] ... [6, 7, 8]
+```
