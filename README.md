@@ -1,9 +1,13 @@
-### fromEvent - creates streams from DOM events ###
+### fromEvent
+creates streams from DOM events ###
+```javascript
   fromEvent(document.body, 'click')
     .subscribe(event => console.log(event));
+```
 
 
-### of - creates streams from simple data, emits array as single element of stream ###
+### of
+creates streams from simple data, emits array as single element of stream ###
   of(5, 'string', false, [3, 5, 7])
     .subscribe(data => console.log(data));
 
