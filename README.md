@@ -201,3 +201,28 @@ interval(1000)
   .subscribe(data => console.log(data));
 output: [0, 1, 2] ... [3, 4, 5] ... [6, 7, 8]
 ```
+
+### defaultIfEmpty(defaultValue)
+Emits a given value if the source Observable completes without emitting any next value, otherwise mirrors the source Observable
+```javascript
+of()
+  .pipe(defaultIfEmpty('Stream is empty')
+  .subscribe(data => console.log(data));
+output: 'Stream is empty'
+
+fromEvent(document, 'click')
+  .pipe(
+    takeUntil(interval(5000)),
+    defaultIfEmpty('no clicks')
+    ).subscribe(data => console.log(data));
+output: 'no clicks' after 500 ms
+```
+
+### every
+checks if every value meets the condition in callback
+```javascript
+from([1, 2, 3, 4])
+  .pipe(every(number => number % 2 === 0))
+  .subscribe(data => console.log(data));
+output: false
+```
